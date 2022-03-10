@@ -1,0 +1,33 @@
+body{
+    background-color: #89B0FF;
+    font-size: 125%;
+}
+header{
+    background-color: #F2F8FF;
+    text-align: center;
+    font-size: 200%;
+}
+nav{
+    text-align: center;
+    background-color: #CAD1D8;
+    font-variant: small-caps;
+    font-family: Arial;
+    font-size: 150%;
+}
+h1{
+    color: #274C74;
+}
+h2{
+    background-color: #A5F9FF;
+    color: #320569;
+}
+summary{
+    font-style: italic;
+}
+details{
+    font-style: italic;
+}
+footer{
+    background-color: #D6FFFD;
+    text-align: center;
+}
