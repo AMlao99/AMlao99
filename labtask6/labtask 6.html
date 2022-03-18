@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Validation Form Data</title>
+        <link rel="stylesheet" href="website6.css">
+        <link rel="icon" type="image/x=icon" href="form.png">
+    </head>
+    <div class="container">
+        <div class="header">
+            <h2>Sign Up</h2>
+         </div>
+         <form class="form" id="form">
+            <div class="form-control">
+                <input type="First Name" placeholder="First Name" id="firstname">
+                <small>Error message</small>
+            </div>
+
+            <div class="form-control">
+                <input type="Middle Initial" placeholder="Middle Initial" id="mi">
+                <small>Error message</small>
+            </div>
+
+            <div class="form-control">
+                <input type="Last Name" placeholder="Last Name" id="li">
+                <small>Error message</small>
+            </div>
+
+            <div class="form-control">
+                <input type="Email Address" placeholder="Email Address" id="ea">
+                <small>Error message</small>
+            </div>
+
+            <div class="submit">
+                <input type="submit" value="Submit">
+            </div>
+            <div class="reset">
+                <input type="reset" value="Reset">
+            </div>
+
+
+            <script>
+                const FirstName = document.getElementById('firstname');
+                const MiddleInitial= document.getElementById('mi');
+                const LastName = document.getElementById('li');
+                const EmailAddress = document.getElementById('ea');
+
+                form.addEventListener('submit', (e) =>{
+                    e.preventDefault();
+                    checkinputs();
+                });
+                function checkinputs(){
+                    const FirstNameValue = FirstName.value.trim();
+                    const MiddleInitiaValue = MiddleInitial.value.trim();
+                    const LastNameValue = LastName.value.trim();
+                    const EmailAddressValue = EmailAddress.value.trim();
+                    let n, m, l, e;
+
+                    if(FirstNameValue === ''){
+                        setErrorFor(FirstName, 'First Name is required');
+                        n=0;
+                    } else {
+                        SetSuccessFor(FirstName);
+                        n=1;
+                    }
+                    if(MiddleInitiaValue === ''){
+                        setErrorFor(MiddleInitial, 'Middle Initial is required');
+                        m=0;
+                    } else {
+                        SetSuccessFor(MiddleInitial);
+                        m=1;
+                    }
+                    if(LastNameValue === ''){
+                        setErrorFor(LastName, 'Last Name is required');
+                        l=0;
+                    } else {
+                        SetSuccessFor(LastName);
+                        l=1;
+                    }
+                    if(EmailAddressValue === ''){
+                        setErrorFor(EmailAddress, 'Email Address is required');
+                        e=0;
+                    } else if(!isEmail(EmailAddressValue)){
+                        setErrorFor(EmailAddress, 'Not a valid email');
+                        e=0;
+                    } else {
+                        SetSuccessFor(EmailAddress);
+                        e=1;
+                    }
+
+                    if(l == 1 && e == 1 && m == 1 && n == 1){
+                        let result = alert("Success! You are now signed up!")
+                    };
+
+                }
+                function setErrorFor(input,message){
+                    const formControl = input.parentElement;
+                    const small = formControl.querySelector('small');
+
+                    small.innerText = message;
+
+                    formControl.className = 'form-control error';
+                }
+                function SetSuccessFor(input){
+                    const formControl = input.parentElement;
+                    formControl.className = 'form-control success';
+                }
+                function isEmail(EmailAddress) {
+	                return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(EmailAddress);
+                }
+            </script>
+        </form>
+    </div>
+</html>
